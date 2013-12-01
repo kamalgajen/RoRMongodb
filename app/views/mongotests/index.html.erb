@@ -1,0 +1,25 @@
+<h1>Listing mongotests</h1>
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mongotests.each do |mongotest| %>
+  <tr>
+    <td><%= mongotest.key %></td>
+    <td><%= mongotest.value %></td>
+    <td><%= link_to 'Show', mongotest %></td>
+    <td><%= link_to 'Edit', edit_mongotest_path(mongotest) %></td>
+    <td><%= link_to 'Destroy', mongotest, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mongotest', new_mongotest_path %>

@@ -1,0 +1,49 @@
+<%= form_for(@forecast) do |f| %>
+  <% if @forecast.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@forecast.errors.count, "error") %> prohibited this forecast from being saved:</h2>
+
+      <ul>
+      <% @forecast.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :productid %><br />
+    <%= f.number_field :productid %>
+  </div>
+  <div class="field">
+    <%= f.label :locationid %><br />
+    <%= f.number_field :locationid %>
+  </div>
+  <div class="field">
+    <%= f.label :calendarid %><br />
+    <%= f.number_field :calendarid %>
+  </div>
+  <div class="field">
+    <%= f.label :productcategoryid %><br />
+    <%= f.number_field :productcategoryid %>
+  </div>
+  <div class="field">
+    <%= f.label :startdate %><br />
+    <%= f.date_select :startdate %>
+  </div>
+  <div class="field">
+    <%= f.label :enddate %><br />
+    <%= f.date_select :enddate %>
+  </div>
+  <div class="field">
+    <%= f.label :divisionid %><br />
+    <%= f.number_field :divisionid %>
+  </div>
+  <div class="field">
+    <%= f.label :optrev %><br />
+    <%= f.text_field :optrev %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

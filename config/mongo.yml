@@ -1,0 +1,19 @@
+# host: 50.18.104.42
+defaults: &defaults
+  host: localhost
+  port: 27017
+
+development:
+  <<: *defaults
+  database: perf
+
+test:
+  <<: *defaults
+  database: mongoapp_test
+
+# set these environment variables on your prod server
+production:
+  <<: *defaults
+  database: mongoapp
+  username: <%= ENV['MONGO_USERNAME'] %>
+  password: <%= ENV['MONGO_PASSWORD'] %>

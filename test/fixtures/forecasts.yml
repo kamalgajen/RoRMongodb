@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  productid: 1
+  locationid: 1
+  calendarid: 1
+  productcategoryid: 1
+  startdate: 2012-02-19
+  enddate: 2012-02-19
+  divisionid: 1
+  optrev: 1.5
+
+two:
+  productid: 1
+  locationid: 1
+  calendarid: 1
+  productcategoryid: 1
+  startdate: 2012-02-19
+  enddate: 2012-02-19
+  divisionid: 1
+  optrev: 1.5

@@ -1,0 +1,87 @@
+<h1>Mongo Aggregation</h1>
+
+<br/>
+
+<div class="field">
+  <%= form_tag("aggregate", :method => "get") do %>
+  	<%= hidden_field_tag 'requesttype', 'aggregation' %> 
+  	<%= hidden_field_tag 'aggtype', 'pdwtodw' %> 
+  	<%= submit_tag("Aggregate Product-Division-Week to Division-Week") %>	
+  <% end %>
+</div>
+<div class="field">
+  <%= form_tag("aggregate", :method => "get") do %>	
+    <%= hidden_field_tag 'requesttype', 'aggregation' %> 
+    <%= hidden_field_tag 'aggtype', 'pdwtopd' %> 
+    <%= submit_tag("Aggregate Product-Division-Week to Product-Division") %>	
+  <% end %>
+</div>
+
+<hr>
+
+<%= form_tag("aggregate", :method => "get") do %>
+  <%= hidden_field_tag 'requesttype', 'search' %> 
+  <div class="field">
+	<select name="aggtype">
+	  <option value="">Please select Aggregation to use for searching:</option>
+	  <option value="pdwtodw"
+		<% if @aggtype == "pdwtodw" %> selected="selected"<% end %>
+	  >Division Week</option>
+	  <option value="pdwtopd"
+		<% if @aggtype == "pdwtopd" %> selected="selected"<% end %>
+	  >Product Division</option>
+	</select>
+  </div>
+
+  <div class="field">
+    <%= label_tag(:productid, "Product Id:") %><br />
+  	<%= text_field_tag(:productid, params[:productid]) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:locationid, "Location Id:") %><br />
+  	<%= text_field_tag(:locationid, params[:locationid]) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:divisionid, "Division Id:") %><br />
+  	<%= text_field_tag(:divisionid, params[:divisionid]) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:calendarid, "Week Id:") %><br />
+  	<%= text_field_tag(:calendarid, params[:calendarid]) %>
+  </div>
+  <div class="field">
+	<%= submit_tag("Search") %>
+  </div>
+<% end %>
+
+<br/>
+
+<table>
+	<% if @agg %>
+
+		<!-- display header -->
+		<tr>
+			<% @headers.each do |header| %>
+		  		<th><%= header %></th>
+			<% end %>
+		</tr>
+
+		<!-- display rows -->
+		<% @agg.each do |agg| %>
+		  <tr>
+		    <% agg['_id'].each do |aggkeys| %>
+    	  	  <td><%= "#{aggkeys[1]}" %></td>	 	
+ 			<% end %>
+		    <% agg['value'].each do |aggvalues| %>
+    	  	  <td><%= "#{aggvalues[1]}" %></td>	 	
+ 			<% end %>
+		  </tr>
+		<% end %>
+		
+		
+	<% end %>
+</table>
+
+<br><br>
+
+<%= link_to 'Back', forecasts_path %>

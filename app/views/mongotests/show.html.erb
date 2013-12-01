@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Key:</b>
+  <%= @mongotest.key %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @mongotest.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_mongotest_path(@mongotest) %> |
+<%= link_to 'Back', mongotests_path %>

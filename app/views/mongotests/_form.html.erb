@@ -1,0 +1,25 @@
+<%= form_for(@mongotest) do |f| %>
+  <% if @mongotest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mongotest.errors.count, "error") %> prohibited this mongotest from being saved:</h2>
+
+      <ul>
+      <% @mongotest.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.number_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

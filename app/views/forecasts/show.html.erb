@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Productid:</b>
+  <%= @forecast.productid %>
+</p>
+
+<p>
+  <b>Locationid:</b>
+  <%= @forecast.locationid %>
+</p>
+
+<p>
+  <b>Divisionid:</b>
+  <%= @forecast.divisionid %>
+</p>
+
+<p>
+  <b>Calendarid:</b>
+  <%= @forecast.calendarid %>
+</p>
+
+<p>
+  <b>Productcategoryid:</b>
+  <%= @forecast.productcategoryid %>
+</p>
+
+<p>
+  <b>Startdate:</b>
+  <%= @forecast.startdate %>
+</p>
+
+<p>
+  <b>Enddate:</b>
+  <%= @forecast.enddate %>
+</p>
+
+<p>
+  <b>Volume:</b>
+  <%= @forecast.optunitvol %>
+</p>
+
+<p>
+  <b>Revenue:</b>
+  <%= @forecast.optrev %>
+</p>
+
+<p>
+  <b>GrossMargin:</b>
+  <%= @forecast.optgrossmargin %>
+</p>
+
+<%= link_to 'Edit', edit_forecast_path(@forecast) %> |
+<%= link_to 'Back', forecasts_path %>

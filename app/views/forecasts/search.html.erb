@@ -1,0 +1,80 @@
+<h1>Mongo Search</h1>
+
+
+<%= form_tag("search", :method => "get") do %>
+  <div class="field">
+    <%= label_tag(:productid, "Product Id:") %><br />
+  	<%= text_field_tag(:productid, params[:productid]) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:locationid, "Location Id:") %><br />
+  	<%= text_field_tag(:locationid, params[:locationid]) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:divisionid, "Division Id:") %><br />
+  	<%= text_field_tag(:divisionid, params[:divisionid]) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:calendarid, "Week Id:") %><br />
+  	<%= text_field_tag(:calendarid, params[:calendarid]) %>
+  </div>
+  <div class="field">
+    <%= label_tag("Start Date:") %><br />
+  	After  <%= text_field_tag(:beginstartdate, params[:beginstartdate]) %>, 
+  	Before <%= text_field_tag(:endstartdate, params[:endstartdate]) %>
+  </div>
+  <div class="field">
+    <%= label_tag("End Date:") %><br />
+  	After  <%= text_field_tag(:beginenddate, params[:beginenddate]) %>, 
+  	Before <%= text_field_tag(:endenddate, params[:endenddate]) %>
+  </div>
+  <div class="field">
+	<%= submit_tag("Search") %>
+  </div>
+<% end %>
+
+<br/>
+
+<table>
+<% if @forecasts %>
+
+<tr>
+  <th>Productid</th>
+  <th>Locationid</th>
+  <th>Divisionid</th>
+  <th>Calendarid</th>
+  <th>Productcategoryid</th>
+  <th>Startdate</th>
+  <th>Enddate</th>
+  <th>Volume</th>
+  <th>Revenue</th>
+  <th>GrossMargin</th>
+  <th></th>
+  <th></th>
+  <th></th>
+</tr>
+
+<% @forecasts.each do |forecast| %>
+
+  <tr>
+    <td><%= forecast.productid %></td>
+    <td><%= forecast.locationid %></td>
+    <td><%= forecast.divisionid %></td>
+    <td><%= forecast.calendarid %></td>
+    <td><%= forecast.productcategoryid %></td>
+    <td><%= forecast.startdate %></td>
+    <td><%= forecast.enddate %></td>
+    <td><%= forecast.optunitvol %></td>
+    <td><%= forecast.optrev %></td>
+    <td><%= forecast.optgrossmargin %></td>
+    <td><%= link_to 'Show', forecast %></td>
+    <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
+    <td><%= link_to 'Delete', forecast, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+
+<br><br>
+
+<%= link_to 'Back', forecasts_path %>
